@@ -1,0 +1,28 @@
+{
+    "entries": [
+      {
+        "id": "1",
+        "title": "The World's Largest Snowflake",
+        "content": "The largest snowflake ever recorded was reported in Montana, USA, in 1887. It measured 38 cm (15 inches) wide and 20 cm (8 inches) thick. That’s one massive snowflake! While it sounds like a fun fact, it's also a reminder of how extreme weather can sometimes produce truly amazing natural phenomena.",
+        "bookmarked": false
+      },
+      {
+        "id": "2",
+        "title": "Octopuses Have Three Hearts",
+        "content": "Octopuses are fascinating creatures, and one of the coolest facts about them is that they have three hearts! Two pump blood to the gills, while the third pumps it to the rest of the body. When an octopus swims, the heart that delivers blood to the body stops beating, which is why they prefer crawling to swimming—it’s less exhausting!",
+        "bookmarked": true
+      },
+      {
+        "id": "3",
+        "title": "Bananas Are Berries",
+        "content": "It might sound surprising, but bananas are actually classified as berries in the botanical world. This is because they develop from a flower with a single ovary and have a soft, fleshy fruit. On the other hand, fruits like strawberries and raspberries aren't technically berries because they come from flowers with multiple ovaries. Nature sure has its own rules!",
+        "bookmarked": true
+      },
+      {
+        "id": "5",
+        "title": "Sharks Are Older Than Trees",
+        "content": "Sharks have been around for over 400 million years, which makes them older than trees! While the first trees appeared around 350 million years ago, sharks have been swimming in the oceans, evolving into the species we recognize today. So, sharks have witnessed a lot of changes in Earth’s ecosystems over the centuries.",
+        "bookmarked": false
+      }
+    ]
+  }
