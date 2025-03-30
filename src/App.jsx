@@ -6,8 +6,8 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/entries" />} /> 
-        <Route path="/" element={<Layout />}>
+        <Route path="*" element={<Navigate to="/entries" />} /> 
+        <Route path="*" element={<Layout />}>
           <Route path="entries" element={<Entries />} /> 
           <Route path="entries/:topicId" element={<EntryDetail />} />
           <Route path="entries/search" element={<SearchResults />} />
@@ -65,7 +65,7 @@ function Entries() {
 
   useEffect(() => {
     document.title = "Wiki - Entries"; 
-    fetch("http://localhost:3000/entries") 
+    fetch("http://localhost:5173/entries") 
       .then(res => res.json())
       .then(data => {
         setEntries(data); 
@@ -95,7 +95,7 @@ function EntryDetail() {
   const [entry, setEntry] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/entries/${topicId}`) // კონკრეტული სტატიის მისაღებად მოთხოვნა fetch ით
+    fetch(`http://localhost:5173/entries/${topicId}`) // კონკრეტული სტატიის მისაღებად მოთხოვნა fetch ით
       .then(res => res.json())
       .then(data => {
         setEntry(data); 
@@ -106,7 +106,7 @@ function EntryDetail() {
 
   const handleDelete = () => {
     if (window.confirm("Are you sure you want to delete this entry?")) {
-      fetch(`http://localhost:3000/entries/${topicId}`, { method: "DELETE" }) // სტატიის წაშლა
+      fetch(`http://localhost:5173/entries/${topicId}`, { method: "DELETE" }) // სტატიის წაშლა
         .then(() => navigate("/entries")); // სიახლეების განახლება
     }
   };
@@ -131,7 +131,7 @@ function SearchResults() {
 
   useEffect(() => {
     document.title = `Search: ${query}`; 
-    fetch("http://localhost:3000/entries")
+    fetch("http://localhost:5173/entries")
       .then(res => res.json())
       .then(data => {
         setResults(data.filter(entry =>
@@ -164,7 +164,7 @@ function Bookmarks() {
   const [entries, setEntries] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/entries")
+    fetch("http://localhost:5173/entries")
       .then(res => res.json())
       .then(data => setEntries(data.filter(entry => entry.bookmarked))) 
       .catch(() => {});
