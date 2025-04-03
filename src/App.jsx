@@ -65,7 +65,7 @@ function Entries() {
 
   useEffect(() => {
     document.title = "Wiki - Entries"; 
-    fetch("http://localhost:5173/entries") 
+    fetch("http://localhost:3000/entries") 
       .then(res => res.json())
       .then(data => {
         setEntries(data); 
@@ -91,11 +91,11 @@ function Entries() {
 // კონკრეტული სტატიების დეტალები
 function EntryDetail() {
   const { topicId } = useParams(); 
-  const navigate = useNavigate(); // ნავიგაციის ფუნქცია
+  const navigate = useNavigate();
   const [entry, setEntry] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5173/entries/${topicId}`) // კონკრეტული სტატიის მისაღებად მოთხოვნა fetch ით
+    fetch(`http://localhost:3000/entries/${topicId}`) // კონკრეტული სტატიის მისაღებად მოთხოვნა fetch ით
       .then(res => res.json())
       .then(data => {
         setEntry(data); 
@@ -106,7 +106,7 @@ function EntryDetail() {
 
   const handleDelete = () => {
     if (window.confirm("Are you sure you want to delete this entry?")) {
-      fetch(`http://localhost:5173/entries/${topicId}`, { method: "DELETE" }) // სტატიის წაშლა
+      fetch(`http://localhost:3000/entries/${topicId}`, { method: "DELETE" }) // სტატიის წაშლა
         .then(() => navigate("/entries")); // სიახლეების განახლება
     }
   };
@@ -131,11 +131,11 @@ function SearchResults() {
 
   useEffect(() => {
     document.title = `Search: ${query}`; 
-    fetch("http://localhost:5173/entries")
+    fetch("http://localhost:3000/entries")
       .then(res => res.json())
       .then(data => {
         setResults(data.filter(entry =>
-          entry.title.toLowerCase().includes(query.toLowerCase()) // ფილტრი
+          entry.title.toLowerCase().includes(query.toLowerCase())
         ));
         setLoading(false); 
       })
@@ -159,12 +159,12 @@ function SearchResults() {
   );
 }
 
-//  მხოლოდ აღნიშნულ სტატიებს იწერსამ ფუნქციით
+//  მხოლოდ აღნიშნულ სტატიებს იწერს ამ ფუნქციით
 function Bookmarks() {
   const [entries, setEntries] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5173/entries")
+    fetch("http://localhost:3000/entries")
       .then(res => res.json())
       .then(data => setEntries(data.filter(entry => entry.bookmarked))) 
       .catch(() => {});
@@ -197,7 +197,7 @@ function NewEntry() {
     e.preventDefault(); 
     if (title.length < 5 || content.length < 10) return; // მინიმუმი ასოების რაოდენობა
 
-    fetch("http://localhost:5173/entries", {
+    fetch("http://localhost:3000/entries", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title, content, bookmarked: false }) // ახალი სტატიის გაგზავნა jso ფაილში

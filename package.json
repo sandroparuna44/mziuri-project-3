@@ -8,7 +8,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "dev": "vite",
-    "server": "json-server --watch data.json --port 5173"
+    "server": "json-server --watch data.json --port 3000"
   },
   "dependencies": {
     "react": "^19.0.0",
